@@ -21,7 +21,11 @@ polinomio * poli_create(int grau){
 
 void poli_destroy(polinomio **p){
     // TODO: Implemente aqui a solucao para operacao destroy
-
+    if(p != NULL && *p != NULL) {
+        free((*p)->coeficientes);
+        free(*p);
+        *p = NULL;
+    }
 
     return;
 }
