@@ -4,9 +4,19 @@
 #include "poli.h"
 
 polinomio * poli_create(int grau){
-    // TODO: Implemente aqui a solucao para operacao create
-
-    return NULL;
+    polinomio *p = (polinomio*)malloc(sizeof(polinomio));
+    if(p == NULL) {
+        return NULL;
+    }
+    p->grau = grau;
+    p->termos = 0;
+    *p->coeficientes = (int*)malloc(grau + 1 * sizeof(int));
+    if(p->coeficientes == NULL) {
+        printf("Erro ao alocar vetor de polinomios. Linha %d no arquivo %s\n", __LINE__, __FILE__);
+        free(p);
+    }
+   
+    return p;
 }
 
 void poli_destroy(polinomio **p){
